@@ -1,5 +1,5 @@
 ---
-- name: install apche in ubuntu
+- name: install apache in ubuntu
   host: all
   become: yes
   tasks:
