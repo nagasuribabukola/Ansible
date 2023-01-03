@@ -1,0 +1,41 @@
+---
+Movie:
+  - Name: RRR
+    Actors:
+      - Ram Charan
+      - NTR
+    Director: S.S.Rjamouli
+    Languages:
+      - Telugu
+      - Hindi
+      - English
+      - Tamil
+    Producers:
+      Telugu: D. V. V. Danayya
+      Tamil:
+        - Pen Studios
+        - Lyca Productions
+    Music: M.M.Kiravani
+    Release Date: 25-03-2022
+  - Name: Bheemla Nayak
+    Actors: Pawan Kalyan
+    Director: Saagar K Chandra
+    Languages: Telugu
+    Producers: Naga Vamsi S
+    Music: Taman S
+    Release Date: 25-02-2022
+Favorite Place:
+  - Name: Magatapalli
+    Mandal: Mamidikuduru
+    Near: Razole
+    State: Andhra Pradesh
+    Because:
+      - Birth Place
+      - Own Village
+      - Spend My Childhood
+      - School Friends
+  - Name: Hyderabad
+    State: Telangana
+    Because:
+      - Work Place
+      - All Resources Available
