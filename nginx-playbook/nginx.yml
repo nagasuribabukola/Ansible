@@ -1,5 +1,5 @@
 ---
-  - name: nginx install in ubuntu
+  - name: install nginx in ubuntu
     host: all
     become: yes
     tasks:
