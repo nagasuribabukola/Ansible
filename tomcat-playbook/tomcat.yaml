@@ -26,5 +26,5 @@
         dest: /tmp
     - name: extract tomcat tar.gz file
       ansible.builtin.unarchive:
-        src: /tmp
+        src: /tmp/
         dest: /opt/tomcat/
