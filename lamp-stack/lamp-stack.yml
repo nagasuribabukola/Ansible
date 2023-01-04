@@ -20,3 +20,10 @@
       ansible.builtin.file:
         path: /var/www/kola
         state: directory
+    - name: Recursively change ownership of a directory
+      ansible.builtin.file:
+        path: /var/www/kola
+        recurse: yes
+        owner: suresh
+        group: suresh
+        state: directory
