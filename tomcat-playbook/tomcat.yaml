@@ -40,5 +40,4 @@
         group: tomcat
         state: directory
     - name: executing shell script
-      ansible.builtin.shell:
-        executable: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+      ansible.builtin.shell: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
