@@ -10,5 +10,5 @@
         state: present
     - name: php install on ubuntu
       ansible.builtin.apt:
-        name: php libapache2-mod-php
+        name: php
         state: present
