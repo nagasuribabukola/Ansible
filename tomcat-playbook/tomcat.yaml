@@ -22,9 +22,10 @@
         state: present
     - name: download tomcat using url
       ansible.builtin.get_url:
-        url: https://www-eu.apache.org/dist/tomcat/tomcat-10/v10.1.4/bin/apache-tomcat-10.1.4.tar.gz
+        url: 
         dest: /tmp
     - name: extract tomcat tar.gz file
       ansible.builtin.unarchive:
-        src: /tmp/
+        src: https://www-eu.apache.org/dist/tomcat/tomcat-10/v10.1.4/bin/apache-tomcat-10.1.4.tar.gz
+        remote_src: yes
         dest: /opt/tomcat/
