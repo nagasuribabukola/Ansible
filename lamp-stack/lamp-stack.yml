@@ -35,4 +35,6 @@
         group: suresh
     - name: enable new site
       ansible.builtin.command: "/usr/sbin/a2ensite kola"
-      notify: reload Apache
+    - name: disable default Apache site
+      ansible.builtin.command: "/usr/sbin/a2dissite 000-default"
+      when: disable_default
