@@ -44,6 +44,6 @@
     - name: create index file
       ansible.builtin.copy:
         src: index.html
-        dest: /var/www/suresh/index.html
+        dest: /var/www/kola/index.html
         owner: suresh
         group: suresh
