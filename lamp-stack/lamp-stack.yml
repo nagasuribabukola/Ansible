@@ -34,7 +34,7 @@
         owner: suresh
         group: suresh
     - name: enable new site
-      ansible.builtin.command: "/usr/sbin/a2ensite kola"
+      ansible.builtin.command: "/usr/sbin/a2ensite kola.conf"
     - name: dsable default apache server
       ansible.builtin.command: "/usr/sbin/a2ensite 000-default"
     - name: reload apache2
