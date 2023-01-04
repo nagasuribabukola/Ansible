@@ -33,11 +33,6 @@
         dest: /etc/apache2/sites-available/kola.conf
         owner: suresh
         group: suresh
-    - name: enable the new virtual host
-      ansible.builtin.ssh: sudo a2ensite kola
-    - name: To disable Apache default website
-      ansible.builtin.ssh: sudo a2dissite 000-default
-    - name: restart apache2
-      ansible.builtin.systemd:
-        name: apache2
-        state: restarted
+    - name: enable new site
+      ansible.builtin.command: "/usr/sbin/a2ensite kola"
+      notify: reload Apache
