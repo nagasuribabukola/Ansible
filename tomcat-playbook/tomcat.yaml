@@ -47,3 +47,9 @@
         dest: /etc/systemd/system/tomcat.service
         owner: tomcat
         group: tomcat
+    - name: deamon reload
+      ansible.builtin.systemd:
+        name: tomcat
+        daemon_reload: true
+        enabled: true
+        state: started
