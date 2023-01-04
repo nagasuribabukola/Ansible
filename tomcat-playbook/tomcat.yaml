@@ -8,6 +8,10 @@
         name: openjdk-11-jdk
         update_cache: true
         state: present
+    - name: add tomcat group
+      ansible.builtin.group:
+        name: tomcat
+        state: present
     - name: add tomcat user
       ansible.builtin.user:
         name: tomcat
