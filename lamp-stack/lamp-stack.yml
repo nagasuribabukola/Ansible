@@ -1,0 +1,10 @@
+---
+- name: lamp stack install on ubuntu
+  hosts: all
+  become: yes
+  tasks:
+    - name: apache install on ubuntu
+      ansible.builtin.apt:
+        name: apache2
+        update_cache: true
+        state: present
