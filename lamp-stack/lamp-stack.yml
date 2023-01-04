@@ -27,3 +27,9 @@
         owner: suresh
         group: suresh
         state: directory
+    - name: create conf file
+      ansible.builtin.copy:
+        src: kola.conf
+        dest: /etc/apache2/sites-available/kola.conf
+        owner: suresh
+        group: suresh
