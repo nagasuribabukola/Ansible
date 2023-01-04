@@ -19,7 +19,7 @@
     - name: domain directory create
       ansible.builtin.file:
         name: suresh
-        path: /var/www/
+        path: /var/www/suresh
         recurse: true
         owner: suresh
         group: suresh
