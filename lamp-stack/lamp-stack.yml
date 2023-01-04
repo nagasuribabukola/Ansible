@@ -37,6 +37,8 @@
       ansible.builtin.command: "/usr/sbin/a2ensite kola.conf"
     - name: dsable default apache server
       ansible.builtin.command: "/usr/sbin/a2ensite 000-default"
+      when: disable_default
+      notify: reload Apache
     - name: reload apache2
       ansible.builtin.systemd:
         name: apache2
