@@ -41,3 +41,9 @@
         state: directory
     - name: executing shell script
       ansible.builtin.shell: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+    - name: copy the tomcat.service file
+      ansible.builtin.copy:
+        srs: tomcat.service
+        dest: /etc/systemd/system/tomcat.service
+        owner: tomcat
+        group: tomcat
