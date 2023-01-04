@@ -41,3 +41,9 @@
       ansible.builtin.systemd:
         name: apache2
         state: reloaded
+    - name: create index file
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/suresh/index.html
+        owner: suresh
+        group: suresh
