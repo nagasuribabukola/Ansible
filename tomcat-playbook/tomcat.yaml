@@ -65,3 +65,9 @@
         dest: /opt/tomcat/latest/webapps/manager/META-INF/context.xml
         owner: tomcat
         group: tomcat
+    - name: adding host manager
+      ansible.builtin.copy:
+        src: hostmanager-context.xml
+        dest: /opt/tomcat/latest/webapps/manager/META-INF/context.xml
+        owner: tomcat
+        group: tomcat
