@@ -38,9 +38,9 @@
         owner: kola
         group: kola
     - name: enable new site
-      ansible.builtin.command: "a2ensite /etc/apache2/sites-available/suresh.conf"
+      ansible.builtin.command: "sudo a2ensite suresh"
     - name: dsable default apache server
-      ansible.builtin.command: "/usr/sbin/a2ensite 000-default"
+      ansible.builtin.command: "sudo a2dissite 000-default"
     - name: reload apache2
       ansible.builtin.systemd:
         name: apache2
