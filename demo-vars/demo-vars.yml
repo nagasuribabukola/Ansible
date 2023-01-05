@@ -6,7 +6,7 @@
   tasks:
     - name: print variable value
       debug:
-        var: name
+        name: "{{ name }}"
     - name: print something else
       debug:
         msg: "Hello, {{ name }}"
