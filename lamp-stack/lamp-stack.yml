@@ -51,3 +51,19 @@
         dest: /var/www/suresh/index.html
         owner: kola
         group: kola
+    - name: create dir conf file
+      ansible.builtin.copy:
+        src: dir.conf
+        dest: /etc/apache2/mods-enabled/dir.conf
+        owner: kola
+        group: kola
+    - name: reload apache2
+      ansible.builtin.systemd:
+        name: apache2
+        state: reloaded
+    - name: create info php file
+      ansible.builtin.copy:
+        src: info.php
+        dest: /var/www/suresh/info.php
+        owner: kola
+        group: kola
