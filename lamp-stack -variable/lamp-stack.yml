@@ -1,0 +1,76 @@
+---
+- name: lamp stack install on ubuntu
+  hosts: all
+  become: yes
+  vars:
+    apache_package_name: apache2
+    package_name: php
+    lib_packege_name: libapache2-mod-php
+    user_name: kola
+    group_name: kola
+    dir_name: suresh
+  tasks:
+    - name: apache install on ubuntu
+      ansible.builtin.apt:
+        name: "{{ apache_package_name }}"
+        update_cache: true
+        state: present
+    - name: php install on ubuntu
+      ansible.builtin.apt:
+        name: "{{ package_name }}"
+        state: present
+    - name: libapache2-mod-php install on ubuntu
+      ansible.builtin.apt:
+        name: "{{ lib_packege_name }}"
+        state: present
+    - name: create group
+      ansible.builtin.group:
+        name: "{{ group_name }}"
+        state: present
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "/var/www/{{ dir_name }}"
+        state: directory
+    - name: Recursively change ownership of a directory
+      ansible.builtin.file:
+        path: "/var/www/{{ dir_name }}"
+        recurse: yes
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        state: directory
+    - name: create conf file
+      ansible.builtin.copy:
+        src: suresh.conf
+        dest: /etc/apache2/sites-available/suresh.conf
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+    - name: enable new site
+      ansible.builtin.command: "sudo a2ensite suresh"
+    - name: dsable default apache server
+      ansible.builtin.command: "sudo a2dissite 000-default"
+    - name: "reload {{apache_package_name }}"
+      ansible.builtin.systemd:
+        name: "{{ apache_package_name }}"
+        state: reloaded
+    - name: create index file
+      ansible.builtin.copy:
+        src: index.html
+        dest: "/var/www/{{ dir_name }}/index.html"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+    - name: create dir conf file
+      ansible.builtin.copy:
+        src: dir.conf
+        dest: /etc/apache2/mods-enabled/dir.conf
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+    - name: reload apache2
+      ansible.builtin.systemd:
+        name: "{{ apache_package_name }}"
+        state: reloaded
+    - name: create info php file
+      ansible.builtin.copy:
+        src: info.php
+        dest: "/var/www/{{ dir_name }}/info.php"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
