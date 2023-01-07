@@ -9,6 +9,7 @@
     user_name: kola
     group_name: kola
     dir_name: suresh
+    path_name: /var/www/
   tasks:
     - name: apache install on ubuntu
       ansible.builtin.apt:
@@ -29,11 +30,11 @@
         state: present
     - name: Create a directory if it does not exist
       ansible.builtin.file:
-        path: "/var/www/{{ dir_name }}"
+        path: "{{ path_name }}{{ dir_name }}"
         state: directory
     - name: Recursively change ownership of a directory
       ansible.builtin.file:
-        path: "/var/www/{{ dir_name }}"
+        path: "{{ path_name }}{{ dir_name }}"
         recurse: yes
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
@@ -55,7 +56,7 @@
     - name: create index file
       ansible.builtin.copy:
         src: index.html
-        dest: "/var/www/{{ dir_name }}/index.html"
+        dest: "{{ path_name }}{{ dir_name }}/index.html"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
     - name: create dir conf file
@@ -71,6 +72,6 @@
     - name: create info php file
       ansible.builtin.copy:
         src: info.php
-        dest: "/var/www/{{ dir_name }}/info.php"
+        dest: "{{ path_name }}{{ dir_name }}/info.php"
         owner: "{{ user_name }}"
         group: "{{ group_name }}"
