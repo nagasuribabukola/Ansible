@@ -1,5 +1,6 @@
 [servers]
 35.172.119.149 java_package_name=openjdk-11-jdk
+192.168.142.132 java_package_name=java-11-openjdk-devel
 
 [servers:vars]
 group_name=tomcat
