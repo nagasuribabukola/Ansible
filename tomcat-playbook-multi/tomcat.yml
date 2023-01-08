@@ -7,3 +7,15 @@
       ansible.builtin.package:
         name: "{{ java_package_name }}"
         state: present
+    - name: add tomcat group
+      ansible.builtin.group:
+        name: "{{ group_name }}"
+        state: present
+    - name: add tomcat user
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        create_home: true
+        home: "{{ user_home }}"
+        shell: "{{ user_shell }}"
+        group: "{{ group_name }}"
+        state: present
