@@ -19,3 +19,15 @@
         shell: "{{ user_shell }}"
         group: "{{ group_name }}"
         state: present
+    - name: download & extract tomcat tar.gz file
+      ansible.builtin.unarchive:
+        src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+        remote_src: yes
+        dest: "{{ user_home }}"
+    - name: create symbolik link
+      ansible.builtin.file:
+        src: "{{ user_home }}/apache-tomcat-{{ tomcat_version }}"
+        dest: "{{ user_home }}/latest"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        state: link
