@@ -2,9 +2,9 @@
 35.172.119.149 java_package_name=openjdk-11-jdk
 
 [servers:vars]
-group_name: tomcat
-user_name: tomcat
-user_home: /opt/tomcat
-user_shell: /bin/false
-tomcat_version: 10.1.4
-tomcat_major_version: 10
+group_name=tomcat
+user_name=tomcat
+user_home=/opt/tomcat
+user_shell=/bin/false
+tomcat_version="10.1.4"
+tomcat_major_version="10"
