@@ -2,7 +2,6 @@
 35.172.119.149 java_package_name=openjdk-11-jdk
 
 [servers:vars]
-java_package_name: openjdk-11-jdk
 group_name: tomcat
 user_name: tomcat
 user_home: /opt/tomcat
