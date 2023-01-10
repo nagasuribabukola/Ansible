@@ -46,7 +46,7 @@
     - name: add execute permissions to shell files
       ansible.builtin.file:
         path: "{{ user_home }}/latest/bin/"
-        mode: 'a+x'
+        mode: 'a+r'
       with_items: find_result.files
     - name: Create a systemd unit file
       ansible.builtin.template:
