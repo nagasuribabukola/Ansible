@@ -46,8 +46,6 @@
     - name: add execute permissions to shell files
       ansible.builtin.file:
         path: "{{ user_home }}/latest/bin/"
-        owner: tomcat
-        group: tomcat
         mode: '777'
       with_items: find_result.files
     - name: Create a systemd unit file
