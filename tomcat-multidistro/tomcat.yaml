@@ -89,5 +89,15 @@
       ansible.builtin.systemd:
         name: "{{ tomcat_service_name }}"
         state: restarted
+    - name: find shell files
+      ansible.builtin.find:
+        paths: "{{ user_home }}/latest/bin/"
+        patterns: '*.sh'
+      register: find_result
     - name: add execute permissions to shell files
-      ansible.builtin.command: "sudo sh -c 'chmod +x {{ user_home }}/latest/bin/*.sh'"
+      ansible.builtin.file:
+        path: "{{ user_home }}/latest/bin/"
+        owner: tomcat
+        group: tomcat
+        mode: '0777'
+      with_items: find_result.files
