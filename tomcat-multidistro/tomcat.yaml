@@ -100,5 +100,5 @@
         path: "{{ user_home }}/latest/bin/"
         owner: tomcat
         group: tomcat
-        mode: 'a+x'
+        mode: 'a-x'
       with_items: find_result.files
