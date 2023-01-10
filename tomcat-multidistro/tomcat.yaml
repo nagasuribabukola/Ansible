@@ -39,6 +39,7 @@
         dest: "{{ user_home }}/latest"
         state: link
       notify:
+        - find shell files
         - add execute permissions to shell files
     - name: Create a systemd unit file
       ansible.builtin.template:
