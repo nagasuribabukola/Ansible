@@ -38,9 +38,18 @@
         src: "{{ user_home }}/apache-tomcat-{{ tomcat_version }}"
         dest: "{{ user_home }}/latest"
         state: link
-      notify:
-        - find shell files
-        - add execute permissions to shell files
+    - name: find shell files
+      ansible.builtin.find:
+        paths: "{{ user_home }}/latest/bin/"
+        patterns: '*.sh'
+      register: find_result
+    - name: add execute permissions to shell files
+      ansible.builtin.file:
+        path: "{{ user_home }}/latest/bin/"
+        owner: tomcat
+        group: tomcat
+        mode: 'a-x'
+      with_items: find_result.files
     - name: Create a systemd unit file
       ansible.builtin.template:
         src: tomcat.service.j2
@@ -90,15 +99,3 @@
       ansible.builtin.systemd:
         name: "{{ tomcat_service_name }}"
         state: restarted
-    - name: find shell files
-      ansible.builtin.find:
-        paths: "{{ user_home }}/latest/bin/"
-        patterns: '*.sh'
-      register: find_result
-    - name: add execute permissions to shell files
-      ansible.builtin.file:
-        path: "{{ user_home }}/latest/bin/"
-        owner: tomcat
-        group: tomcat
-        mode: 'a-x'
-      with_items: find_result.files
