@@ -48,7 +48,7 @@
         path: "{{ user_home }}/latest/bin/"
         owner: tomcat
         group: tomcat
-        mode: 'a-x'
+        mode: '777'
       with_items: find_result.files
     - name: Create a systemd unit file
       ansible.builtin.template:
